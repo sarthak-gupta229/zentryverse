@@ -31,9 +31,7 @@ body {
   font-family: "general", sans-serif;
 }
 
-/* =========================
-   BASE LAYER
-   ========================= */
+
 @layer base {
   @font-face {
     font-family: "general";
@@ -66,9 +64,7 @@ body {
   }
 }
 
-/* =========================
-   UTILITIES
-   ========================= */
+
 @layer utilities {
   .special-font b {
     font-family: "zentry", sans-serif;
@@ -118,7 +114,7 @@ body {
     left: 0;
     height: 2px;
     width: 100%;
-    background-color: rgb(38 38 38);
+    background-color: var(--color-blue-50);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
@@ -186,5 +182,9 @@ body {
 
   .contact-clip-path-2 {
     clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+  }
+
+  .about-image {
+    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
   }
 }
