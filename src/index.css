@@ -1,99 +1,190 @@
 @import "tailwindcss";
 
-body {
-  font-family: "General Sans", sans-serif;
-  width: 100dvw;
-  background-color: "#dfdff0";
-  overflow-x: hidden;
+@theme {
+  /* Fonts */
+  --font-general: "general", sans-serif;
+  --font-circular-web: "circular-web", sans-serif;
+  --font-robert-medium: "robert-medium", sans-serif;
+  --font-robert-regular: "robert-regular", sans-serif;
+  --font-zentry: "zentry", sans-serif;
+
+  /* Colors */
+  --color-blue-50: #dfdff0;
+  --color-blue-75: #dfdff2;
+  --color-blue-100: #f0f2fa;
+  --color-blue-200: #010101;
+  --color-blue-300: #4fb7dd;
+
+  --color-violet-300: #5724ff;
+
+  --color-yellow-100: #8e983f;
+  --color-yellow-300: #edff66;
 }
 
+/* =========================
+   GLOBAL
+   ========================= */
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: var(--color-blue-50);
+  font-family: "general", sans-serif;
+}
+
+/* =========================
+   BASE LAYER
+   ========================= */
 @layer base {
-  @font-face {
-    font-family: "circular-web";
-    src: url("/fonts/circularweb-book.woff2") format("woff2");
-    font-display: swap;
-  }
   @font-face {
     font-family: "general";
     src: url("/fonts/general.woff2") format("woff2");
     font-display: swap;
   }
+
+  @font-face {
+    font-family: "circular-web";
+    src: url("/fonts/circularweb-book.woff2") format("woff2");
+    font-display: swap;
+  }
+
   @font-face {
     font-family: "robert-medium";
     src: url("/fonts/robert-medium.woff2") format("woff2");
     font-display: swap;
   }
+
   @font-face {
     font-family: "robert-regular";
     src: url("/fonts/robert-regular.woff2") format("woff2");
     font-display: swap;
   }
 
-  :root {
-    --blue-50: #dfdff0;
-    --blue-75: #dfdff2;
-    --blue-100: #f0f2fa;
-    --blue-200: #010101;
-    --blue-300: #4fb7dd;
-
-    --violet-300: #5724ff;
-
-    --yellow-100: #8e983f;
-    --yellow-300: #edff66;
+  @font-face {
+    font-family: "zentry";
+    src: url("/fonts/zentry-regular.woff2") format("woff2");
+    font-display: swap;
   }
 }
 
+/* =========================
+   UTILITIES
+   ========================= */
 @layer utilities {
-  .font-general {
-    font-family: general, sans-serif;
-  }
-
-  .font-circular-web {
-    font-family: circular-web, sans-serif;
-  }
-
-  .font-robert-medium {
-    font-family: robert-medium, sans-serif;
+  .special-font b {
+    font-family: "zentry", sans-serif;
+    font-feature-settings: "ss01" on;
   }
 
   .font-robert-regular {
-    font-family: robert-regular, sans-serif;
+    font-family: "robert-regular", sans-serif;
   }
 
-  .bg-blue-50 {
-    background-color: var(--blue-50);
-  }
-  .bg-blue-75 {
-    background-color: var(--blue-75);
-  }
-  .bg-blue-100 {
-    background-color: var(--blue-100);
-  }
-  .bg-blue-200 {
-    background-color: var(--blue-200);
-  }
-  .bg-blue-300 {
-    background-color: var(--blue-300);
+  .font-robert-medium {
+    font-family: "robert-medium", sans-serif;
   }
 
-  .text-blue-300 {
-    color: var(--blue-300);
+  /* Borders / layout */
+  .border-hsla {
+    @apply border border-white/20;
   }
 
-  .bg-violet-300 {
-    background-color: var(--violet-300);
-  }
-  .text-violet-300 {
-    color: var(--violet-300);
+  .floating-nav {
+    @apply bg-black rounded-lg border;
   }
 
-  .bg-yellow-100 {
-    background-color: var(--yellow-100);
+  .flex-center {
+    @apply flex items-center justify-center;
   }
-  .bg-yellow-300 {
-    background-color: var(--yellow-300);
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
-  .text-yellow-300 {
-    color: var(--yellow-300);
+
+  /* Nav hover */
+  .nav-hover-btn {
+    position: relative;
+    margin-inline-start: 2.5rem;
+    font-family: "general", sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-blue-50);
+    cursor: pointer;
+  }
+
+  .nav-hover-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -0.125rem;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(38 38 38);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+
+  .nav-hover-btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .dark .nav-hover-btn::after {
+    background-color: white;
+  }
+
+  /* Typography sections */
+  .hero-heading {
+    font-family: "zentry", sans-serif;
+    @apply uppercase font-black text-5xl sm:text-7xl md:text-9xl lg:text-[12rem];
+  }
+
+  .about-subtext {
+    font-family: "circular-web", sans-serif;
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center text-lg md:max-w-[34rem];
+  }
+
+  .animated-title {
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+  }
+
+  .animated-word {
+    font-family: "zentry", sans-serif;
+    font-feature-settings: "ss01" on;
+    @apply font-black opacity-0;
+    transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px;
+    will-change: opacity, transform;
+  }
+
+  /* Images / layouts */
+  .gallery-img-container {
+    background-color: var(--color-violet-300);
+    @apply size-64 overflow-hidden;
+  }
+
+  .gallery-img {
+    @apply size-full bg-cover;
+  }
+
+  .gallery-img-4 {
+    @apply sm:size-80 md:h-96 md:w-[25rem] rounded-lg;
+  }
+
+  /* Clip paths */
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .sword-man-clip-path {
+    clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+  }
+
+  .contact-clip-path-1 {
+    clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+  }
+
+  .contact-clip-path-2 {
+    clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
   }
 }

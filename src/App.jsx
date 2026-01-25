@@ -1,10 +1,14 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import Hero from './components/Hero'
+import "./index.css";
+import About from './components/About.jsx'
 
 const App = () => {
+
   return (
-    <main>
-      <h1 className='text-3xl font-bold text-violet-300'>My name is Sarthak</h1>
+    <main className='relative min-h-screen w-screen overflow-x-hidden'>
+      <Hero/>
+      <About/>
     </main>
   )
 }
