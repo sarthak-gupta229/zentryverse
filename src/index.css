@@ -8,7 +8,7 @@
   --font-robert-regular: "robert-regular", sans-serif;
   --font-zentry: "zentry", sans-serif;
 
-  /* Colors */
+
   --color-blue-50: #dfdff0;
   --color-blue-75: #dfdff2;
   --color-blue-100: #f0f2fa;
@@ -21,9 +21,7 @@
   --color-yellow-300: #edff66;
 }
 
-/* =========================
-   GLOBAL
-   ========================= */
+
 body {
   width: 100dvw;
   overflow-x: hidden;
@@ -79,7 +77,7 @@ body {
     font-family: "robert-medium", sans-serif;
   }
 
-  /* Borders / layout */
+
   .border-hsla {
     @apply border border-white/20;
   }
@@ -96,7 +94,7 @@ body {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
 
-  /* Nav hover */
+
   .nav-hover-btn {
     position: relative;
     margin-inline-start: 2.5rem;
@@ -151,7 +149,7 @@ body {
     }
   }
 
-  /* Typography sections */
+
   .hero-heading {
     font-family: "zentry", sans-serif;
     @apply uppercase font-black text-5xl sm:text-7xl md:text-9xl lg:text-[12rem];
@@ -175,7 +173,7 @@ body {
     will-change: opacity, transform;
   }
 
-  /* Images / layouts */
+
   .gallery-img-container {
     background-color: var(--color-violet-300);
     @apply size-64 overflow-hidden;
@@ -189,7 +187,7 @@ body {
     @apply sm:size-80 md:h-96 md:w-[25rem] rounded-lg;
   }
 
-  /* Clip paths */
+
   .mask-clip-path {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
@@ -208,5 +206,15 @@ body {
 
   .about-image {
     @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+  }
+  .bento-title {
+    @apply uppercase md:text-6xl text-4xl font-black font-zentry;
+  }
+  .bento-tilt_1 {
+    @apply relative border-hsla col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+  }
+
+  .bento-tilt_2 {
+    @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
   }
 }
