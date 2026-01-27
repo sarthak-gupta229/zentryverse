@@ -19,7 +19,7 @@ const Story = () => {
             <div className="story-img-mask ">
               <div className="story-img-content ">
                 <video
-                  src="/videos/story1.mp4"
+                  src="/videos/story11.mp4"
                   loop
                   muted
                   autoPlay
