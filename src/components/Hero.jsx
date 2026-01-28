@@ -5,6 +5,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import { Atom } from "react-loading-indicators";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,10 +31,10 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    if (loadedVideos === totalVideos) {
+    if (loadedVideos === totalVideos - 1) {
       setIsLoading(false);
     }
-  }, [loadedVideos, totalVideos]);
+  }, [loadedVideos]);
 
   useGSAP(
     () => {
@@ -80,6 +81,11 @@ const Hero = () => {
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden" id="nexus">
+      {isLoading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+          <Atom color="#4231cc" size="large" text="" textColor="" />
+        </div>
+      )}
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
