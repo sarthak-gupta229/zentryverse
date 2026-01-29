@@ -12,10 +12,10 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Safety fallback: if videos never load (network error), remove loader after 8s
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
-
+    }, 8000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,7 +27,7 @@ const App = () => {
         </div>
       )}
       <Navbar />
-      <Hero />
+      <Hero onVideoLoad={() => setLoading(false)} />
       <About />
       <Features />
       <Story />
