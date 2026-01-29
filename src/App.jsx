@@ -19,16 +19,13 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-        <Atom color="#4231cc" size="large" text="" textColor="" />
-      </div>
-    );
-  }
-
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
+      {loading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+          <Atom color="#4231cc" size="large" text="" textColor="" />
+        </div>
+      )}
       <Navbar />
       <Hero />
       <About />

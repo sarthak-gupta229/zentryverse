@@ -165,12 +165,9 @@ const Features = () => (
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <video
-            src="https://cdn.guildfi.com/video/upload/v1750333838/datahub/78mf2Psna26EXFkHOhsnruHdg.mp4"
-            loop
-            muted
-            autoPlay
+        <BentoTilt className="bento-tilt_2 h-96 md:h-auto">
+          <img
+            src="img/Zentry-1.jpg"
             className="size-full object-cover object-center"
           />
         </BentoTilt>
