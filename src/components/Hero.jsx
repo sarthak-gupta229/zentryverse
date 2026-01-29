@@ -91,7 +91,6 @@ const Hero = ({ onVideoLoad }) => {
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
             >
               <video
-                ref={nextVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
                 muted
@@ -99,6 +98,7 @@ const Hero = ({ onVideoLoad }) => {
                 className="size-64 origin-center scale-150
                         object-cover object-center"
                 onLoadedData={handleVideoLoad}
+                onError={handleVideoLoad}
               />
             </div>
           </div>
@@ -110,6 +110,7 @@ const Hero = ({ onVideoLoad }) => {
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
+            onError={handleVideoLoad}
           />
           <video
             src={getVideoSrc(CurrentIndex)}
@@ -118,6 +119,7 @@ const Hero = ({ onVideoLoad }) => {
             muted
             className="absolute left-0 top-0 size-full object-cover object-center "
             onLoadedData={handleVideoLoad}
+            onError={handleVideoLoad}
           />
         </div>
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
