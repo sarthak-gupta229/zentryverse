@@ -9,9 +9,10 @@ import { Atom } from "react-loading-indicators";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = ({ onVideoLoad }) => {
+const Hero = () => {
   const [CurrentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
@@ -31,7 +32,7 @@ const Hero = ({ onVideoLoad }) => {
 
   useEffect(() => {
     if (loadedVideos === totalVideos - 1) {
-      if (onVideoLoad) onVideoLoad();
+      setIsLoading(false);
     }
   }, [loadedVideos]);
 
@@ -80,6 +81,11 @@ const Hero = ({ onVideoLoad }) => {
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden" id="nexus">
+      {isLoading && (
+        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+          <Atom color="#4231cc" size="large" text="" textColor="" />
+        </div>
+      )}
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
@@ -91,6 +97,7 @@ const Hero = ({ onVideoLoad }) => {
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
             >
               <video
+                ref={nextVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
                 muted
@@ -98,7 +105,6 @@ const Hero = ({ onVideoLoad }) => {
                 className="size-64 origin-center scale-150
                         object-cover object-center"
                 onLoadedData={handleVideoLoad}
-                onError={handleVideoLoad}
               />
             </div>
           </div>
@@ -110,7 +116,6 @@ const Hero = ({ onVideoLoad }) => {
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
-            onError={handleVideoLoad}
           />
           <video
             src={getVideoSrc(CurrentIndex)}
@@ -119,7 +124,6 @@ const Hero = ({ onVideoLoad }) => {
             muted
             className="absolute left-0 top-0 size-full object-cover object-center "
             onLoadedData={handleVideoLoad}
-            onError={handleVideoLoad}
           />
         </div>
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">

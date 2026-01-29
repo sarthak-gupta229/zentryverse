@@ -27,13 +27,12 @@ const App = () => {
         </div>
       )}
       <Navbar />
-      <Hero onVideoLoad={() => setLoading(false)} />
+      <Hero />
       <About />
       <Features />
       <Story />
       <Contact />
       <Footer />
-      {/* fix */}
     </main>
   );
 };
