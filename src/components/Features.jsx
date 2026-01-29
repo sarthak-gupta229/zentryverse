@@ -173,12 +173,10 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2 h-96 md:h-auto border-hsla rounded-md">
-          <video
-            src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
+          <img
+            src="img/nexus-entry-bg.png"
             className="size-full object-cover object-center"
+            isComingSoon
           />
         </BentoTilt>
       </div>
