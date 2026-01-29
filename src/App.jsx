@@ -33,6 +33,7 @@ const App = () => {
       <Story />
       <Contact />
       <Footer />
+      {/* fix */}
     </main>
   );
 };
