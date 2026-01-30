@@ -142,6 +142,19 @@ body {
     }
   }
 
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
   .hero-heading {
     font-family: "zentry", sans-serif;
     @apply uppercase font-black text-5xl sm:text-7xl md:text-9xl lg:text-[12rem];
@@ -201,12 +214,12 @@ body {
     @apply uppercase md:text-6xl text-4xl font-black font-zentry;
   }
   .bento-tilt_1 {
-    @apply relative border border-white/20 col-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+    @apply relative border border-white/20 overflow-hidden rounded-md transition-transform duration-300 ease-out;
   }
 
 
   .bento-tilt_2 {
-    @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+    @apply relative overflow-hidden rounded-md transition-transform duration-300 ease-out;
   }
   .story-img-container {
     @apply relative md:h-dvh h-[90vh] w-full;

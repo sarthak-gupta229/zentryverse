@@ -125,8 +125,8 @@ const Features = () => (
         />
       </BentoTilt>
 
-      <div className="grid h-auto w-full grid-cols-1 grid-rows-5 gap-7 md:grid-cols-2 md:grid-rows-3 md:min-h-[135vh]">
-        <BentoTilt className="bento-tilt_1 row-span-1 h-96 md:h-auto md:col-span-1 md:row-span-2 border-hsla rounded-md">
+      <div className="grid h-auto w-full grid-cols-2 grid-rows-4 gap-7 md:grid-cols-2 md:grid-rows-3 md:min-h-[135vh]">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 border-hsla rounded-md col-span-2">
           <BentoCard
             src="videos/feature-2.mp4"
             title={
@@ -139,7 +139,7 @@ const Features = () => (
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 h-96 md:h-auto md:col-span-1 border-hsla rounded-md">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 border-hsla rounded-md col-span-2">
           <BentoCard
             src="videos/feature-3.mp4"
             title={
@@ -152,7 +152,7 @@ const Features = () => (
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 h-96 md:h-auto md:col-span-1 border-hsla rounded-md">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 border-hsla rounded-md col-span-2">
           <BentoCard
             src="videos/feature-4.mp4"
             title={
@@ -165,14 +165,14 @@ const Features = () => (
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2 h-96 md:h-auto">
+        <BentoTilt className="bento-tilt_2 h-96 md:h-auto col-span-1 row-span-1">
           <img
             src="img/Zentry-1.jpg"
             className="size-full object-cover object-center"
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2 h-96 md:h-auto border-hsla rounded-md">
+        <BentoTilt className="bento-tilt_2 h-96 md:h-auto border-hsla rounded-md col-span-1 row-span-1">
           <img
             src="img/nexus-entry-bg.png"
             className="size-full object-cover object-center"
