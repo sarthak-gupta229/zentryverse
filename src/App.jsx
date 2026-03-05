@@ -13,17 +13,16 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Safety fallback: if videos never load (network error), remove loader after 8s
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 8000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
+        <div className="flex-center fixed z-[1000] h-dvh w-screen overflow-hidden bg-violet-50 ">
           <Atom color="#4231cc" size="large" text="" textColor="" />
         </div>
       )}
