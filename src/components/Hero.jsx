@@ -1,4 +1,4 @@
-import React, { use, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useState, useRef } from "react";
 import Button from "./Button";
 import { TiLocationArrow } from "react-icons/ti";
@@ -16,22 +16,24 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
+  const miniVideoRef = useRef(null);
   const nextVideoRef = useRef(null);
+
+  const upcomingVideoIndex = (CurrentIndex % totalVideos) + 1;
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
     setCurrentIndex(upcomingVideoIndex);
   };
-  const upcomingVideoIndex = (CurrentIndex % totalVideos) + 1;
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
-  const handleVideoLoad = () => {
+  const handleVideoLoad = useCallback(() => {
     setLoadedVideos((prevCount) => prevCount + 1);
-  };
+  }, []);
 
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
+    if (loadedVideos >= totalVideos - 1) {
       setIsLoading(false);
     }
   }, [loadedVideos]);
@@ -48,7 +50,7 @@ const Hero = () => {
           height: "100%",
           duration: 1,
           ease: "power1.inOut",
-          onStart: () => nextVideoRef.current.play(),
+          onStart: () => nextVideoRef.current?.play(),
         });
         gsap.from("#current-video", {
           transformOrigin: "center center",
@@ -81,11 +83,11 @@ const Hero = () => {
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden" id="nexus">
-      {/* {isLoading && (
+      {isLoading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           <Atom color="#4231cc" size="large" text="" textColor="" />
         </div>
-      )} */}
+      )}
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
@@ -97,10 +99,12 @@ const Hero = () => {
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
             >
               <video
-                ref={nextVideoRef}
+                ref={miniVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
                 muted
+                playsInline
+                preload="auto"
                 id="current-video"
                 className="size-64 origin-center scale-150
                         object-cover object-center"
@@ -113,6 +117,8 @@ const Hero = () => {
             src={getVideoSrc(CurrentIndex)}
             loop
             muted
+            playsInline
+            preload="auto"
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
@@ -122,6 +128,8 @@ const Hero = () => {
             autoPlay
             loop
             muted
+            playsInline
+            preload="auto"
             className="absolute left-0 top-0 size-full object-cover object-center "
             onLoadedData={handleVideoLoad}
           />
